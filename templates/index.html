@@ -1,0 +1,230 @@
+{% extends 'base.html' %} {% load static %} {% block homeactive %}active{% endblock homeactive %} {% block body %}
+
+
+
+<!-- Full Page Image Header with Vertically Centered Content -->
+{% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong>Message : </strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+{% endfor %}
+
+<div class="header-section" style="background-image: url({% static 'images/header01.png'%})">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+
+            <div class="col-12">
+
+                <h1 class="col-5 header-text p-2">Brew Your Imagination!!!</h1>
+                <p class="col-4 header-subtext p-2">Creativity Demands To Be Heard</p>
+                <a class="btn col-2 btn text-center m-2">Share Your Story</a>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="container-fluid my-4">
+    <div class="trending_section">
+        <h1 class="text-uppercase"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up mx-2" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"/>
+        </svg></i> trending on estaminet</h1>
+        <!-- news feed starts -->
+        <!--  row 01 starts -->
+        <div class="trending_section_feed my-4 row">
+            <!-- card 01 starts -->
+            
+            {% for blog in trendBlogs %}
+            
+            <div class="col-sm-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <h1 class="my-4 mx-6 py-4 px-4">{{forloop.counter}}</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text "><small class="text-muted"><a href="#">{{blog.author}}</a></small></p>
+                                <p class="card-text trending_section_feed_head"><a href="#">{{blog.title}}</a></p>
+                                <p class="card-text"><small class="text-muted">{{blog.pub_date}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- card 01 ends --> 
+            <!-- card 02 starts -->
+            {% comment %} <div class="col-sm-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <h1 class="my-4 mx-6 py-4 px-4">02</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text "><small class="text-muted"><a href="#">Author Name</a></small></p>
+                                <p class="card-text trending_section_feed_head"><a href="#">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</a></p>
+                                <p class="card-text"><small class="text-muted">Date and Time Updation</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <!-- card 02 ends -->
+            <!-- card 03 starts -->
+            {% comment %} <div class="col-sm-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <h1 class="my-4 mx-6 py-4 px-4">03</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text "><small class="text-muted"><a href="#">Author Name</a></small></p>
+                                <p class="card-text trending_section_feed_head"><a href="#">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</a></p>
+                                <p class="card-text"><small class="text-muted">Date and Time Updation</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <!-- card 03 ends -->
+        </div>
+        <!-- news feed ends -->
+        <!--   row 01 ends -->
+        {% comment %} <div class="trending_section_feed my-4 row">
+            <!-- card 01 starts -->
+            <div class="col-sm-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <h1 class="my-4 mx-6 py-4 px-4">01</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text "><small class="text-muted"><a href="#">Author Name</a></small></p>
+                                <p class="card-text trending_section_feed_head"><a href="#">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</a></p>
+                                <p class="card-text"><small class="text-muted">Date and Time Updation</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <!-- card 01 ends -->
+            <!-- card 02 starts -->
+            {% comment %} <div class="col-sm-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <h1 class="my-4 mx-6 py-4 px-4">02</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text "><small class="text-muted"><a href="#">Author Name</a></small></p>
+                                <p class="card-text trending_section_feed_head"><a href="#">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</a></p>
+                                <p class="card-text"><small class="text-muted">Date and Time Updation</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <!-- card 02 ends -->
+            <!-- card 03 starts -->
+            {% comment %} <div class="col-sm-4">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <h1 class="my-4 mx-6 py-4 px-4">03</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-text "><small class="text-muted"><a href="#">Author Name</a></small></p>
+                                <p class="card-text trending_section_feed_head"><a href="#">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</a></p>
+                                <p class="card-text"><small class="text-muted">Date and Time Updation</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <!-- card 03 ends -->
+        </div>
+        <!--   row 02 starts -->
+        <!--   row 02 ends -->
+    </div>
+</section>
+<section class="container-fluid">
+    <div class="blog_section row">
+        <!-- blog section starts -->
+        <div class="blog_side col-md-7 my-2">
+            <!-- card starts -->
+            {% for blogs in allblogs %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">{{blogs.author}}</small> </p>
+                            <h5 class="card-title">{{blogs.title}}</h5>
+                            <p class="card-text">{{blogs.content|truncatechars:100}}</p>
+                            <p class="card-text"><small class="text-muted">{{blogs.pub_date}}</small> . <small class="text-muted">{{blogs.category}}</small></p>
+                            <a href="{{blogs.slug}}" class="btn btn-success"> Read More </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <img src='/media/{{blogs.image}}' class="img-fluid rounded-start blog_prev_images" alt="Image Here">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% comment %} <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">Author Name</small> </p>
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">date</small> . <small class="text-muted">category</small></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="./image/header-logo/header01.png" class="img-fluid rounded-start" alt="Image Here">
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">Author Name</small> </p>
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">date</small> . <small class="text-muted">category</small></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="./image/header-logo/header01.png" class="img-fluid rounded-start" alt="Image Here">
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text"><small class="text-muted">Author Name</small> </p>
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">date</small> . <small class="text-muted">category</small></p>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/header01.png' %}" class="img-fluid rounded-start" alt="Header Image">
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <!-- card ends ends -->
+        </div>
+        <!--   blog section ends -->
+        {% endblock body %}

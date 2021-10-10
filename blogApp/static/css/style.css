@@ -1,0 +1,170 @@
+/* colors */
+
+:root {
+  --grey: rgb(169, 169, 169);
+  --grey1: rgba(117, 117, 117, 1);
+  --grey2: rgb(248, 248, 248);
+  --font1: "Montserrat", sans-serif;
+  --font2: "Open Sans Condensed", sans-serif;
+  --font3: "Poppins", sans-serif;
+  --font4: "Style Script", cursive;
+  --green: #387226;
+  --ltgreen: #16c79e;
+  --bg_green: #e9ffdb;
+}
+
+/*navigation starts*/
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100000;
+}
+
+.navbar-brand img {
+  width: 30%;
+  height: auto;
+}
+
+.nav_section {
+  box-shadow: 1px 1px 10px var(--grey);
+}
+
+.nav-item {
+  font-family: var(--font1);
+  font-size: 90%;
+}
+
+.nav-item a {
+  /*color: var(--green);*/
+  transition: 0.5s;
+}
+
+.nav-item a:hover,
+a.active {
+  color: var(--green);
+  transition: 0.5s;
+}
+
+.search_btn,
+.get_started_btn {
+  font-family: var(--font1);
+}
+
+/*navigation ends*/
+
+/*modal section starts*/
+
+.form_modal_1 .modal-header,
+.form_modal_2 .modal-header {
+  background-color: black;
+  color: white;
+}
+
+.form_modal_1,
+.form_modal_2,
+.upload-form {
+  font-family: var(--font1);
+}
+
+/*modal section ends*/
+
+/*header section*/
+
+.header-section {
+  height: 100vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+lord-icon {
+  width: 30%;
+  height: 10%;
+}
+
+.header-text {
+  font-family: var(--font3);
+  font-weight: 900;
+}
+
+.header-subtext {
+  font-family: var(--font1);
+}
+
+.header-section a {
+  font-family: var(--font1);
+  background-color: black;
+  color: white;
+}
+
+.header-section a:hover {
+  background-color: var(--green);
+  color: white;
+}
+
+/*header ends*/
+
+/*trending page section starts*/
+
+.trending_section {
+  font-family: var(--font1);
+}
+
+.trending_section h1 {
+  font-size: 80%;
+  font-weight: bold;
+}
+
+.trending_section_feed {
+  font-size: 90%;
+}
+
+.trending_section_feed_head a {
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+}
+
+.footer_section h5 {
+  font-family: var(--font1);
+  color: var(--green);
+  font-size: 90%;
+}
+
+.labels_section h5 {
+  font-family: var(--font1);
+  color: black;
+  font-size: 90%;
+  font-weight: 700;
+}
+
+.footer_links a {
+  font-family: var(--font1);
+  color: var(--grey1);
+  text-decoration: none;
+  font-size: 90%;
+}
+
+.blog_section {
+  font-family: var(--font1);
+}
+
+.inner_label_side {
+  position: sticky;
+  top: 20%;
+}
+
+.label_side_tags a {
+  font-family: var(--font1);
+  font-size: 90%;
+  text-decoration: none;
+  color: var(--green);
+}
+
+/*trending page section ends*/
+
+/* alert starts  */
+
+/* alert ends */

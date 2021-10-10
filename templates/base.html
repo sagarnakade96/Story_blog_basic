@@ -1,0 +1,275 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Writers Estaminet</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+
+
+
+
+    <!-- Navbar starts -->
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav_section form-inline">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo1.png' %}"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item me-4">
+                        <a class="nav-link {% block homeactive %}{% endblock homeactive %}" aria-current="page" href="home">Home</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link {% block aboutactive %}{% endblock aboutactive %} " href="about">About</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link {% block joinactive %}{% endblock joinactive %} " href="join_we">Join WE!</a>
+                    </li>
+                    <!-- <li class="nav-item me-4">
+                        <a class="nav-link" href="#" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Sign In</a>
+                    </li> -->
+                </ul>
+                <form class="d-flex ms-auto my-2 search_btn">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>            
+
+                
+                
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-outline-success ms-2 me-2 get_started_btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          &nbsp&nbsp&nbsp&nbsp{{ request.user }}
+                        </button>
+                        <ul class="drop_menu dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="logout">Logout</a></li>
+                            <li><a class="dropdown-item" href="upload_page">Upload</a></li>
+                        </ul>
+                    </div>
+                    {% else %} 
+                    <div class="navbar-nav">
+                    <button type="button" class="btn btn-outline-success ms-2 get_started_btn" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                    Get Started
+                    <span class="position-absolute top-0 start-100 translate-middle"></span>
+                    </button>
+                    </div>
+                    {% endif %}          
+
+
+         
+            </div>
+        </div>
+    </nav>
+
+</header>
+    <!-- Navbar Ends -->
+    <div class="form_modal_1">
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-uppercase" id="exampleModalToggleLabel">Log In Form</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action='/login' method='post'>
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="loginUname" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="loginUname" name="loginUname" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPass" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="loginPass" name="loginPass">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+    
+                            <button type="submit" class="btn btn-outline-success">Log in</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <p>New User?</p>
+                        <button class="btn btn-outline-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal 1 ends -->
+    <!-- modal 2 starts //SIGN UP PAGE-->
+
+    <div class="form_modal_2">
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-uppercase" id="exampleModalToggleLabel2">Sign Up Form</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3 needs-validation" action='/sign_up' method='post' novalidate>
+                            {% csrf_token %}
+                            <div class="col-md-4">
+                                <label for="fname" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="fname" placeholder="Name" name="fname" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="lname" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="lname" placeholder="Lastname" name="lname" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="uname" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" class="form-control" id="uname" aria-describedby="inputGroupPrepend" name="uname" required>
+                                    <label for="uname" class="form-label">5 Letters Only</label>
+                                    <div class="invalid-feedback">
+                                        Please choose a username.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid Password.
+                                </div>
+                            </div>
+                            <!--                 <div class="col-md-3">
+                  <label for="validationCustom04" class="form-label">State</label>
+                  <select class="form-select" id="validationCustom04" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option>...</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid state.
+                  </div>
+                </div> -->
+                            <div class="col-md-6">
+                                <label for="email01" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email01" placeholder="abc@gmail.com" name="email01" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid Email
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="birthday" class="form-label">Birth Date</label>
+                                <input type="date" class="form-control" id="birthday" name="birthday" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid birth date.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <label class="form-check-label" for="invalidCheck">
+                      Agree to terms and conditions
+                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-outline-success" type="submit">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Already User?</p>
+                        <button class="btn btn-outline-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Log In</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal 2 ends  -->
+ 
+    <!-- modal ends -->
+
+
+    {% block body %}{% endblock body %}
+
+    <!--  labels side starts -->
+    <div class="label_side col-md-4 my-2">
+        <div class="inner_label_side">
+            <div class="labels_section">
+                <h5 class="text-uppercase my-2">discover more of what you like</h5>
+                <div class="label_side_tags">
+                    <a href="#" class="m-3 p-1">Science Fiction</a>
+                    <a href="#" class="m-3 p-1">Humour</a>
+                    <a href="#" class="m-3 p-1">Romance</a>
+                    <a href="#" class="m-3 p-1">Horror</a>
+                    <a href="#" class="m-3 p-1">Philosophical</a>
+                    <a href="#" class="m-3 p-1">Political</a>
+                    <a href="#" class="m-3 p-1">Motivational</a>
+                </div>
+            </div>
+            <div class="footer_section my-4">
+                <h5>See all topics</h5>
+                <hr>
+                <div class="footer_links">
+                    <a href="#" class="mx-2">Help</a>
+                    <a href="#" class="mx-2">Status</a>
+                    <a href="#" class="mx-2">Writers</a>
+                    <a href="#" class="mx-2">Blog</a>
+                    <a href="#" class="mx-2">Careers</a>
+                    <a href="#" class="mx-2">Privacy</a>
+                    <a href="#" class="mx-2">Terms</a>
+                    <a href="#" class="mx-2">About</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--     label side ends -->
+    </div>
+    </section>
+
+    <!-- modal starts -->
+    <!-- modal 1 starts -->
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+        {% comment %} <script>
+      
+      window.addEventListener("scroll",function(){
+
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky",window.scrollY > 0);
+      })
+    </script> {% endcomment %}
+</body>
+
+</html>

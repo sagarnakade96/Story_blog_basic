@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {% load static %} {% block body %}
+
+<!-- Full Page Image Header with Vertically Centered Content -->
+
+<section class="container-fluid">
+  <div class="row">
+    <!-- blog section starts -->
+    <div class="col-md-7 my-2">
+      <!-- card starts -->
+     
+        <div class="container-fluid">
+          <div class="upload-form mt-2">
+            <h1 class="text-center text-uppercase text-light bg-success m-2">
+              Submit Your Story
+            </h1>
+            <form action="/upload_page" method="post">
+              {% csrf_token %} 
+              <div class="mt-4">
+                <label for="title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  placeholder="This is my story"
+                />
+              </div>
+              <div class="mb-3 mt-4">
+                <label for="content" class="form-label">Content</label>
+                <textarea
+                  class="form-control"
+                  id="content"
+                  rows="10"
+                ></textarea>
+              </div>
+              <div>
+                <select
+                  class="form-select mt-4"
+                  aria-label="Default select example"
+                  id="category" name="category"
+                >
+                  <option selected>Categories</option>
+                  <option value="1">Science Fiction</option>
+                    <option value="2">Humour</option>
+                    <option value="3">Romance</option>
+                    <option value="4">Horror</option>
+                    <option value="5">Philosophical</option>
+                    <option value="6">Political</option>
+                    <option value="7">Motivational</option>
+                </select>
+              </div>
+              <!-- <div class="mt-2">
+                <a href="#"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-plus"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                    /></svg
+                  >Add More Categories</a
+                >
+              </div> -->
+              <div>
+                <label for="author" class="form-label mt-4">Author</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="author"
+                  name="author"
+                  placeholder="Author Name"
+                />
+              </div>
+              <div class="mb-3 mt-4">
+                <label for="formFile" class="form-label">Select Image</label>
+                <input class="form-control" type="file" id="image" />
+              </div>
+
+              <div class="mb-3 mt-4">
+                <label>Url</label>
+                <input class="form-control" type="text" id="slug" name="slug" disabled/>
+              </div>
+
+              <div class="mt-4 col-12 mb-4">
+                <button class="btn bg-success text-light" type="submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+     
+      <!-- card ends ends -->
+    </div>
+<script>
+    
+</script>
+
+    <!--   blog section ends -->
+    {% endblock body %}
+  </div>
+</section>
